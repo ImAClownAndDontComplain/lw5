@@ -2,8 +2,8 @@
 #include "engine_common.h"
 #include "billboard_list.h"
 
-#define NUM_ROWS 10
-#define NUM_COLUMNS 10
+#define NUM_ROWS 20
+#define NUM_COLUMNS 20
 
 
 BillboardList::BillboardList()

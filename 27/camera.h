@@ -48,5 +48,3 @@ private:
 
     Vector2i m_mousePos;
 };
-
-

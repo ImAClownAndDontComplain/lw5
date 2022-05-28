@@ -16,11 +16,11 @@
 #define WINDOW_HEIGHT 1024
 
 
-class Tutorial27 : public ICallbacks
+class Main : public ICallbacks
 {
 public:
 
-    Tutorial27()
+    Main()
     {
         m_pLightingTechnique = NULL;
         m_pGameCamera = NULL;
@@ -30,7 +30,7 @@ public:
 
         m_dirLight.AmbientIntensity = 0.2f;
         m_dirLight.DiffuseIntensity = 0.8f;
-        m_dirLight.Color = Vector3f(1.0f, 1.0f, 1.0f);
+        m_dirLight.Color = Vector3f(0.7, 0.2, 0.2);
         m_dirLight.Direction = Vector3f(1.0f, 0.0f, 0.0f);
 
         m_persProjInfo.FOV = 60.0f;
@@ -41,7 +41,7 @@ public:
     }
 
 
-    ~Tutorial27()
+    ~Main()
     {
         SAFE_DELETE(m_pLightingTechnique);
         SAFE_DELETE(m_pGameCamera);
@@ -53,7 +53,7 @@ public:
 
     bool Init()
     {
-        Vector3f Pos(0.0f, 1.0f, -1.0f);
+        Vector3f Pos(23, 1.0f, -2.0f);
         Vector3f Target(0.0f, -0.5f, 1.0f);
         Vector3f Up(0.0, 1.0f, 0.0f);
 
@@ -77,7 +77,7 @@ public:
             return false;
         }
 
-        if (!m_billboardList.Init("monster_hellknight.png")) {
+        if (!m_billboardList.Init("kitty.png")) {
             return false;
         }
 
@@ -174,13 +174,13 @@ private:
 int main(int argc, char** argv)
 {
     GLUTBackendInit(argc, argv);
-    Magick::InitializeMagick(nullptr); // <--- added this line
+    Magick::InitializeMagick(*argv); 
 
     if (!GLUTBackendCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, 32, false, "FreakShow27")) {
         return 1;
     }
 
-    Tutorial27* pApp = new Tutorial27();
+    Main* pApp = new Main();
 
     if (!pApp->Init()) {
         return 1;
