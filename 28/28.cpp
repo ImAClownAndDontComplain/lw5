@@ -23,18 +23,16 @@
 #include <ctime>
 
 #define WINDOW_WIDTH  900
-#define WINDOW_HEIGHT 1500
+#define WINDOW_HEIGHT 900
 
-static long long GetCurrentTimeSec()
+/*static long long GetCurrentTimeMillis()
 {
-    time_t now = time(0);
-    tm t;
-    localtime_s(&t,&now );
-    //time(&t);
+    time_t t;
+    time(&t);
 
-    long long ret = t.tm_sec * 1000;
+    long long ret = t.wSecond * 1000 + t.wMilliseconds / 1000;
     return ret;
-}
+}*/
 
 class Tutorial28 : public ICallbacks
 {
@@ -59,7 +57,7 @@ public:
         m_persProjInfo.zNear = 1.0f;
         m_persProjInfo.zFar = 100.0f;
 
-        m_currentTimeMillis = GetCurrentTimeSec();
+        m_currentTimeMillis = GetCurrentTime();
     }
 
 
@@ -127,7 +125,7 @@ public:
 
     virtual void RenderSceneCB()
     {
-        long long TimeNowMillis = GetCurrentTimeSec();
+        long long TimeNowMillis = GetCurrentTime();
         assert(TimeNowMillis >= m_currentTimeMillis);
         unsigned int DeltaTimeMillis = (unsigned int)(TimeNowMillis - m_currentTimeMillis);
         m_currentTimeMillis = TimeNowMillis;
@@ -203,7 +201,7 @@ int main(int argc, char** argv)
     srand(_getpid());
 
     GLUTBackendInit(argc, argv);
-    Magick::InitializeMagick(nullptr); // <--- added this line
+    Magick::InitializeMagick(*argv); // <--- added this line
 
     if (!GLUTBackendCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, 32, false, "FreakShow28")) {
         return 1;

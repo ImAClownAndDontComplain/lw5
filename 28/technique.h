@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TECHNIQUE_H
+#define	TECHNIQUE_H
+
 #include <list>
 #include <GL/glew.h>
 
@@ -34,4 +36,6 @@ private:
 
 #define INVALID_UNIFORM_LOCATION 0xFFFFFFFF
 
+
+#endif	/* TECHNIQUE_H */
 

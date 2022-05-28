@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TEXTURE_H
+#define	TEXTURE_H
+
 #include <string>
 
 #include <GL/glew.h>
@@ -20,4 +22,7 @@ private:
     Magick::Image* m_pImage;
     Magick::Blob m_blob;
 };
+
+
+#endif	/* TEXTURE_H */
 

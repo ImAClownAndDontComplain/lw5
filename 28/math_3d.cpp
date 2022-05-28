@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "math_3d.h"
+#include <glm/glm.hpp>
 
 Vector3f Vector3f::Cross(const Vector3f& v) const
 {
@@ -23,8 +24,8 @@ Vector3f& Vector3f::Normalize()
 
 void Vector3f::Rotate(float Angle, const Vector3f& Axe)
 {
-    const float SinHalfAngle = sinf(ToRadian(Angle/2));
-    const float CosHalfAngle = cosf(ToRadian(Angle/2));
+    const float SinHalfAngle = sinf(glm::radians(Angle/2));
+    const float CosHalfAngle = cosf(glm::radians(Angle/2));
 
     const float Rx = Axe.x * SinHalfAngle;
     const float Ry = Axe.y * SinHalfAngle;
@@ -54,9 +55,9 @@ void Matrix4f::InitRotateTransform(float RotateX, float RotateY, float RotateZ)
 {
     Matrix4f rx, ry, rz;
 
-    const float x = ToRadian(RotateX);
-    const float y = ToRadian(RotateY);
-    const float z = ToRadian(RotateZ);
+    const float x = glm::radians(RotateX);
+    const float y = glm::radians(RotateY);
+    const float z = glm::radians(RotateZ);
 
     rx.m[0][0] = 1.0f; rx.m[0][1] = 0.0f   ; rx.m[0][2] = 0.0f    ; rx.m[0][3] = 0.0f;
     rx.m[1][0] = 0.0f; rx.m[1][1] = cosf(x); rx.m[1][2] = -sinf(x); rx.m[1][3] = 0.0f;
@@ -104,7 +105,7 @@ void Matrix4f::InitPersProjTransform(const PersProjInfo& p)
 {
     const float ar         = p.Width / p.Height;
     const float zRange     = p.zNear - p.zFar;
-    const float tanHalfFOV = tanf(ToRadian(p.FOV / 2.0f));
+    const float tanHalfFOV = tanf(glm::radians(p.FOV / 2.0f));
 
     m[0][0] = 1.0f/(tanHalfFOV * ar); m[0][1] = 0.0f;            m[0][2] = 0.0f;            m[0][3] = 0.0;
     m[1][0] = 0.0f;                   m[1][1] = 1.0f/tanHalfFOV; m[1][2] = 0.0f;            m[1][3] = 0.0;

@@ -12,14 +12,14 @@ static const char* pFSName = "FS";
 const char* ShaderType2ShaderName(GLuint Type)
 {
     switch (Type) {
-        case GL_VERTEX_SHADER:
-            return pVSName;
-        case GL_GEOMETRY_SHADER:
-            return pGSName;
-        case GL_FRAGMENT_SHADER:
-            return pFSName;
-        default:
-            assert(0);
+    case GL_VERTEX_SHADER:
+        return pVSName;
+    case GL_GEOMETRY_SHADER:
+        return pGSName;
+    case GL_FRAGMENT_SHADER:
+        return pFSName;
+    default:
+        assert(0);
     }
 
     return NULL;
@@ -37,7 +37,7 @@ Technique::~Technique()
     // Delete the intermediate shader objects that have been added to the program
     // The list will only contain something if shaders were compiled but the object itself
     // was destroyed prior to linking.
-    for (ShaderObjList::iterator it = m_shaderObjList.begin() ; it != m_shaderObjList.end() ; it++)
+    for (ShaderObjList::iterator it = m_shaderObjList.begin(); it != m_shaderObjList.end(); it++)
     {
         glDeleteShader(*it);
     }
@@ -64,7 +64,7 @@ bool Technique::Init()
 
 // Use this method to add shaders to the program. When finished - call finalize()
 bool Technique::AddShader(GLenum ShaderType, const char* pShaderText)
-{  
+{
     GLuint ShaderObj = glCreateShader(ShaderType);
 
     if (ShaderObj == 0) {
@@ -78,7 +78,7 @@ bool Technique::AddShader(GLenum ShaderType, const char* pShaderText)
     const GLchar* p[1];
     p[0] = pShaderText;
     GLint Lengths[1];
-    Lengths[0]= strlen(pShaderText);
+    Lengths[0] = strlen(pShaderText);
     glShaderSource(ShaderObj, 1, p, Lengths);
 
     glCompileShader(ShaderObj);
@@ -109,12 +109,12 @@ bool Technique::Finalize()
     glLinkProgram(m_shaderProg);
 
     glGetProgramiv(m_shaderProg, GL_LINK_STATUS, &Success);
-	if (Success == 0) {
-		glGetProgramInfoLog(m_shaderProg, sizeof(ErrorLog), NULL, ErrorLog);
-		fprintf(stderr, "Error linking shader program: '%s'\n", ErrorLog);
+    if (Success == 0) {
+        glGetProgramInfoLog(m_shaderProg, sizeof(ErrorLog), NULL, ErrorLog);
+        fprintf(stderr, "Error linking shader program: '%s'\n", ErrorLog);
         return false;
-	}
-    
+    }
+
     glValidateProgram(m_shaderProg);
     glGetProgramiv(m_shaderProg, GL_VALIDATE_STATUS, &Success);
     if (!Success) {
@@ -124,7 +124,7 @@ bool Technique::Finalize()
     }
 
     // Delete the intermediate shader objects that have been added to the program
-    for (ShaderObjList::iterator it = m_shaderObjList.begin() ; it != m_shaderObjList.end() ; it++)
+    for (ShaderObjList::iterator it = m_shaderObjList.begin(); it != m_shaderObjList.end(); it++)
     {
         glDeleteShader(*it);
     }

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef RANDOM_TEXTURE_H
+#define	RANDOM_TEXTURE_H
+
 #include <GL/glew.h>
 
 class RandomTexture
@@ -16,4 +18,7 @@ private:
     GLuint m_textureObj;
 };
 
+
+
+#endif	/* RANDOM_TEXTURE_H */
 

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PARTICLE_SYSTEM_H
+#define	PARTICLE_SYSTEM_H
+
 #include <GL/glew.h>
 
 #include "ps_update_technique.h"
@@ -33,4 +35,6 @@ private:
     Texture* m_pTexture;
     int m_time;
 };
+
+#endif	/* PARTICLE_SYSTEM_H */
 

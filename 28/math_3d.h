@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MATH_3D_H
+#define	MATH_3D_H
+
 #include <stdio.h>
 #include <math.h>
 
@@ -223,4 +225,6 @@ struct Quaternion
 Quaternion operator*(const Quaternion& l, const Quaternion& r);
 
 Quaternion operator*(const Quaternion& q, const Vector3f& v);
+
+#endif	/* MATH_3D_H */
 

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef UTIL_H
+#define	UTIL_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -23,4 +25,6 @@
 
 #define GLCheckError() (glGetError() == GL_NO_ERROR)
 
+
+#endif	/* UTIL_H */
 

@@ -50,7 +50,7 @@ static void InitCallbacks()
 void GLUTBackendInit(int argc, char** argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA|GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 }
 
@@ -68,7 +68,7 @@ bool GLUTBackendCreateWindow(unsigned int Width, unsigned int Height, unsigned i
         glutCreateWindow(pTitle);
     }
 
-    glewExperimental=GL_TRUE;
+    glewExperimental = GL_TRUE;
     // Must be done after glut is initialized!
     GLenum res = glewInit();
     if (res != GLEW_OK) {
@@ -77,7 +77,7 @@ bool GLUTBackendCreateWindow(unsigned int Width, unsigned int Height, unsigned i
     }
 
     glutSetCursor(GLUT_CURSOR_NONE);
-     
+
     return true;
 }
 
@@ -92,8 +92,8 @@ void GLUTBackendRun(ICallbacks* pCallbacks)
     glFrontFace(GL_CW);
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
-    glEnable(GL_DEPTH_TEST);    
-        
+    glEnable(GL_DEPTH_TEST);
+
     s_pCallbacks = pCallbacks;
     InitCallbacks();
     glutMainLoop();

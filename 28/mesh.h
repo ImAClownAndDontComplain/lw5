@@ -1,4 +1,6 @@
-#pragma once
+#ifndef MESH_H
+#define	MESH_H
+
 #include <map>
 #include <vector>
 #include <GL/glew.h>
@@ -67,4 +69,6 @@ private:
     std::vector<Texture*> m_Textures;
 };
 
+
+#endif	/* MESH_H */
 

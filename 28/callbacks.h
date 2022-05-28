@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CALLBACKS_H
+#define	CALLBACKS_H
+
 class ICallbacks
 {
 public:
@@ -14,4 +16,5 @@ public:
     virtual void IdleCB() = 0;
 };
 
+#endif	/* I3DAPPLICATION_H */
 

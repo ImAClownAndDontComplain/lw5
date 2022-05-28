@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BILLBOARD_TECHNIQUE_H
+#define	BILLBOARD_TECHNIQUE_H
+
 #include "technique.h"
 #include "math_3d.h"
 
@@ -23,4 +25,5 @@ private:
     GLuint m_billboardSizeLocation;
 };
 
+#endif	/* BILLBOARD_TECHNIQUE_H */
 

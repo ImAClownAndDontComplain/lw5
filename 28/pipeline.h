@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PIPELINE_H
+#define	PIPELINE_H
+
 #include "math_3d.h"
 
 class Pipeline
@@ -66,4 +68,6 @@ private:
     Matrix4f m_WorldTransformation;
 };
 
+
+#endif	/* PIPELINE_H */
 

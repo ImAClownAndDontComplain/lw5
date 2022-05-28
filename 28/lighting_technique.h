@@ -1,4 +1,6 @@
-#pragma once
+#ifndef LIGHTING_TECHNIQUE_H
+#define	LIGHTING_TECHNIQUE_H
+
 #include "technique.h"
 #include "math_3d.h"
 
@@ -130,3 +132,5 @@ private:
     } m_spotLightsLocation[MAX_SPOT_LIGHTS];
 };
 
+
+#endif	/* LIGHTING_TECHNIQUE_H */
