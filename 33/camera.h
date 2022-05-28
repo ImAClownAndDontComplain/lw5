@@ -1,5 +1,4 @@
 #pragma once
-
 #include "math_3d.h"
 
 
@@ -49,4 +48,3 @@ private:
 
     Vector2i m_mousePos;
 };
-

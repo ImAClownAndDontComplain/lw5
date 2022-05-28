@@ -52,9 +52,9 @@ public:
         m_pGameCamera = NULL;
         m_pEffect = NULL;
         m_scale = 0.0f;
-        m_directionalLight.Color = Vector3f(1.0f, 1.0f, 1.0f);
-        m_directionalLight.AmbientIntensity = 0.55f;
-        m_directionalLight.DiffuseIntensity = 0.9f;
+        m_directionalLight.Color = Vector3f(1.0f, 0.8, 0.8);
+        m_directionalLight.AmbientIntensity = 0.2;
+        m_directionalLight.DiffuseIntensity = 1;
         m_directionalLight.Direction = Vector3f(1.0f, 0.0, 0.0);
 
         m_persProjInfo.FOV = 60.0f;
@@ -77,7 +77,7 @@ public:
 
     bool Init()
     {
-        Vector3f Pos(0.0f, 3.0f, -1.0f);
+        Vector3f Pos(0.0f, 3.0f, -2.0f);
         Vector3f Target(0.0f, 0.0f, 1.0f);
         Vector3f Up(0.0, 1.0f, 0.0f);
 
@@ -86,7 +86,7 @@ public:
         m_pEffect = new SkinningTechnique();
 
         if (!m_pEffect->Init()) {
-            printf("Error initializing the lighting technique\n");
+            printf("Error initializing the skinning technique\n");
             return false;
         }
 
@@ -97,7 +97,7 @@ public:
         m_pEffect->SetMatSpecularIntensity(0.0f);
         m_pEffect->SetMatSpecularPower(0);
 
-        if (!m_mesh.LoadMesh("../Content/boblampclean.md5mesh")) {
+        if (!m_mesh.LoadMesh("boblampclean.md5mesh")) {
             printf("Mesh load failed\n");
             return false;            
         }

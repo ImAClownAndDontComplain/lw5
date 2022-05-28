@@ -18,15 +18,15 @@
 #define WINDOW_HEIGHT 1024
 
 #define NUM_ROWS 50
-#define NUM_COLS 20
+#define NUM_COLS 30
 #define NUM_INSTANCES NUM_ROWS * NUM_COLS
 
 
-class Tutorial33 : public ICallbacks
+class Main : public ICallbacks
 {
 public:
 
-    Tutorial33()
+    Main()
     {
         m_pGameCamera = NULL;
         m_pEffect = NULL;
@@ -47,7 +47,7 @@ public:
         m_fps = 0.0f;
     }
 
-    ~Tutorial33()
+    ~Main()
     {
         SAFE_DELETE(m_pEffect);
         SAFE_DELETE(m_pGameCamera);
@@ -242,7 +242,7 @@ int main(int argc, char** argv)
 
     SRANDOM;
 
-    Tutorial33* pApp = new Tutorial33();
+    Main* pApp = new Main();
 
     if (!pApp->Init()) {
         return 1;

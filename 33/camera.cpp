@@ -1,18 +1,17 @@
 #include <GL/freeglut.h>
-
 #include "camera.h"
 
-const static float STEP_SCALE = 0.4f;
+const static float STEP_SCALE = 0.1f;
 const static int MARGIN = 10;
 
 Camera::Camera(int WindowWidth, int WindowHeight)
 {
-    m_windowWidth  = WindowWidth;
+    m_windowWidth = WindowWidth;
     m_windowHeight = WindowHeight;
-    m_pos          = Vector3f(0.0f, 0.0f, 0.0f);
-    m_target       = Vector3f(0.0f, 0.0f, 1.0f);
+    m_pos = Vector3f(0.0f, 0.5, 3);
+    m_target = Vector3f(0.0f, 0, 1.0f);
     m_target.Normalize();
-    m_up           = Vector3f(0.0f, 1.0f, 0.0f);
+    m_up = Vector3f(0.0f, 1.0f, 0.0f);
 
     Init();
 }
@@ -20,7 +19,7 @@ Camera::Camera(int WindowWidth, int WindowHeight)
 
 Camera::Camera(int WindowWidth, int WindowHeight, const Vector3f& Pos, const Vector3f& Target, const Vector3f& Up)
 {
-    m_windowWidth  = WindowWidth;
+    m_windowWidth = WindowWidth;
     m_windowHeight = WindowHeight;
     m_pos = Pos;
 
@@ -64,8 +63,8 @@ void Camera::Init()
 
     m_AngleV = -ToDegree(asin(m_target.y));
 
-    m_mousePos.x  = m_windowWidth / 2;
-    m_mousePos.y  = m_windowHeight / 2;
+    m_mousePos.x = m_windowWidth / 2;
+    m_mousePos.y = m_windowHeight / 2;
 
     glutWarpPointer(m_mousePos.x, m_mousePos.y);
 }
@@ -78,38 +77,38 @@ bool Camera::OnKeyboard(int Key)
     switch (Key) {
 
     case GLUT_KEY_UP:
-        {
-            m_pos += (m_target * STEP_SCALE);
-            Ret = true;
-        }
-        break;
+    {
+        m_pos += (m_target * STEP_SCALE);
+        Ret = true;
+    }
+    break;
 
     case GLUT_KEY_DOWN:
-        {
-            m_pos -= (m_target * STEP_SCALE);
-            Ret = true;
-        }
-        break;
+    {
+        m_pos -= (m_target * STEP_SCALE);
+        Ret = true;
+    }
+    break;
 
     case GLUT_KEY_LEFT:
-        {
-            Vector3f Left = m_target.Cross(m_up);
-            Left.Normalize();
-            Left *= STEP_SCALE;
-            m_pos += Left;
-            Ret = true;
-        }
-        break;
+    {
+        Vector3f Left = m_target.Cross(m_up);
+        Left.Normalize();
+        Left *= STEP_SCALE;
+        m_pos += Left;
+        Ret = true;
+    }
+    break;
 
     case GLUT_KEY_RIGHT:
-        {
-            Vector3f Right = m_up.Cross(m_target);
-            Right.Normalize();
-            Right *= STEP_SCALE;
-            m_pos += Right;
-            Ret = true;
-        }
-        break;
+    {
+        Vector3f Right = m_up.Cross(m_target);
+        Right.Normalize();
+        Right *= STEP_SCALE;
+        m_pos += Right;
+        Ret = true;
+    }
+    break;
     }
 
     return Ret;
@@ -118,7 +117,7 @@ bool Camera::OnKeyboard(int Key)
 
 void Camera::OnMouse(int x, int y)
 {
-    if (( x == m_mousePos.x)&&(y == m_mousePos.y)) return;
+    if ((x == m_mousePos.x) && (y == m_mousePos.y)) return;
 
     const int DeltaX = x - m_mousePos.x;
     const int DeltaY = y - m_mousePos.y;
