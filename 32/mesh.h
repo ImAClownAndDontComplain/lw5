@@ -26,17 +26,19 @@ struct Vertex
         m_normal = normal;
     }
 };
-
+#define INVALID_MATERIAL 0xFFFFFFFF
+   
+#define INDEX_BUFFER 0    
+#define POS_VB       1
+#define NORMAL_VB    2
+#define TEXCOORD_VB  3   
 
 class Mesh
 {
 public:
     Mesh();
-
     ~Mesh();
-
     bool LoadMesh(const std::string& Filename);
-
     void Render();
 
 private:
@@ -50,31 +52,21 @@ private:
     bool InitMaterials(const aiScene* pScene, const std::string& Filename);
     void Clear();
 
-#define INVALID_MATERIAL 0xFFFFFFFF
-   
-#define INDEX_BUFFER 0    
-#define POS_VB       1
-#define NORMAL_VB    2
-#define TEXCOORD_VB  3       
-
     GLuint m_VAO;
     GLuint m_Buffers[4];
 
     struct MeshEntry {
-        MeshEntry()
-        {
+        MeshEntry()  {
             NumIndices = 0;
             BaseVertex = 0;
             BaseIndex = 0;
             MaterialIndex = INVALID_MATERIAL;
         }
-        
         unsigned int NumIndices;
-	unsigned int BaseVertex;
+	    unsigned int BaseVertex;
         unsigned int BaseIndex;
         unsigned int MaterialIndex;
     };
-    
     std::vector<MeshEntry> m_Entries;
     std::vector<Texture*> m_Textures;
 };
